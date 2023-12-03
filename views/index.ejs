@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>Weather App</h1>
+  <form action="/getWeather" method="post">
+    <label for="cityInput">Enter city name: </label>
+    <input type="text" id="cityInput" name="city" required>
+    <button type="submit">Get Weather</button>
+  </form>
+
+  <% if (weather && Object.keys(weather).length > 0) { %>
+    <div class="weather-container">
+      <h2>Weather Results</h2>
+      <div class="weather-info">
+        <p><strong>Temperature:</strong> <%= weather.temp %>°C</p>
+        <p><strong>Max Temperature:</strong> <%= weather.max_temp %>°C</p>
+        <p><strong>Min Temperature:</strong> <%= weather.min_temp %>°C</p>
+        <p><strong>Humidity:</strong> <%= weather.humidity %>%</p>
+        <p><strong>Cloud Percentage:</strong> <%= weather.cloud_pct %>%</p>
+        <p><strong>Wind Speed:</strong> <%= weather.wind_speed %> m/s</p>
+        <p><strong>Feels Like:</strong> <%= weather.feels_like %>°C</p>
+        <p><strong>Sunrise:</strong> <%= weather.sunrise %></p>
+        <p><strong>Sunset:</strong> <%= weather.sunset %></p>
+      </div>
+    </div>
+  <% } else if (weather) { %>
+    <p>No weather data available.</p>
+  <% } %>
+</body>
+</html>
